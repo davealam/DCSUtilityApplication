@@ -1,6 +1,7 @@
 package dalam.dcsutilitycontroller;
 
 import dalam.dcsutilitymodel.functionality.StandardizeTests;
+import dalam.dcsutilityview.DCSUtilityApplication;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -10,6 +11,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.IOException;
 
 public class MainViewController {
 
@@ -36,6 +38,9 @@ public class MainViewController {
 
     @FXML
     private Button submitButton;
+
+    @FXML
+    private Button logOutButton;
 
     @FXML
     private Label confirmationLabel;
@@ -84,9 +89,22 @@ public class MainViewController {
         if(templateConfigurationFilePathValue != null && templateConfigurationFilePath != null) {
             StandardizeTests standardizeTests = new StandardizeTests();
             standardizeTests.standardize(templateConfigurationFilePathValue, configurationsFilePathValue);
-            confirmationLabel.setText("Operation Completed Successfully");
+
+            //Clear file path values after performing operations, in case of consecutive operations
+            templateConfigurationFilePathValue = configurationsFilePathValue = null;
+            confirmationLabel.setText("Operation Completed Successfully!");
         } else {
-            confirmationLabel.setText("Operation failed, please provide both file paths");
+            confirmationLabel.setText("Operation failed, please provide both file paths!");
+        }
+    }
+
+    //Log user out to sign in screen
+    public void logOutButtonClick() {
+        DCSUtilityApplication dcsUtilityApplication = new DCSUtilityApplication();
+        try {
+            dcsUtilityApplication.changeScene("login-view.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

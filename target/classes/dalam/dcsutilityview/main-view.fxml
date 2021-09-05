@@ -6,23 +6,34 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<TabPane fx:id="tabPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="319.0" prefWidth="555.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dalam.dcsutilitycontroller.MainViewController">
+<TabPane fx:id="tabPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="333.0" prefWidth="555.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dalam.dcsutilitycontroller.MainViewController">
   <tabs>
     <Tab text="Standardize Product Tests">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                   <TextField fx:id="templateConfigurationFilePath" layoutX="135.0" layoutY="77.0" prefHeight="25.0" prefWidth="284.0" />
-                   <Button fx:id="templateConfigurationChooseButton" layoutX="425.0" layoutY="77.0" mnemonicParsing="false" onAction="#chooseTemplateConfigurationButtonClick" text="Choose..." />
-                   <Label fx:id="templateConfigurationLabel" layoutX="131.0" layoutY="54.0" text="Please specify path to TEMPLATE CONFIGURATION File:" />
+                   <TextField fx:id="templateConfigurationFilePath" layoutX="134.0" layoutY="100.0" prefHeight="25.0" prefWidth="284.0" />
+                   <Button fx:id="templateConfigurationChooseButton" layoutX="424.0" layoutY="100.0" mnemonicParsing="false" onAction="#chooseTemplateConfigurationButtonClick" text="Choose..." />
 
-                   <TextField fx:id="configurationsFilePath" layoutX="135.0" layoutY="143.0" prefHeight="25.0" prefWidth="284.0" />
-                   <Button fx:id="fullConfigurationsChooseButton" layoutX="425.0" layoutY="143.0" mnemonicParsing="false" onAction="#chooseConfigurationsButtonClick" text="Choose..." />
-                   <Label fx:id="fullConfigurationsLabel" layoutX="98.0" layoutY="120.0" text="Please specify path to FULL CONFIGURATIONS file to be MODIFIED:" />
+                   <TextField fx:id="configurationsFilePath" layoutX="134.0" layoutY="166.0" prefHeight="25.0" prefWidth="284.0" />
+                   <Button fx:id="fullConfigurationsChooseButton" layoutX="425.0" layoutY="167.0" mnemonicParsing="false" onAction="#chooseConfigurationsButtonClick" text="Choose..." />
+                  <Button fx:id="logOutButton" layoutX="423.0" layoutY="251.0" mnemonicParsing="false" onAction="#logOutButtonClick" text="Log Out" />
 
                    <Button fx:id="submitButton" layoutX="489.0" layoutY="251.0" mnemonicParsing="false" onAction="#submitButtonClick" text="Submit" />
-                  <Label fx:id="confirmationLabel" layoutX="185.0" layoutY="196.0" />
+                   <Label fx:id="fullConfigurationsLabel" layoutX="97.0" layoutY="143.0" text="Please specify path to FULL CONFIGURATIONS file to be MODIFIED:" />
+                   <Label fx:id="templateConfigurationLabel" layoutX="130.0" layoutY="77.0" text="Please specify path to TEMPLATE CONFIGURATION File:" />
+                  <Label layoutX="180.0" layoutY="33.0" text="DCS Utility Application">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="confirmationLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="97.0" layoutY="215.0" prefHeight="20.0" prefWidth="359.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
                </children></AnchorPane>
       </content>
     </Tab>
