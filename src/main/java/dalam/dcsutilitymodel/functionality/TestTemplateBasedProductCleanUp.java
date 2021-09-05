@@ -21,8 +21,8 @@ public class TestTemplateBasedProductCleanUp {
                 csvImportProducts.generateConfigurationTemplate(TEXAS_CONFIG_TEMPLATE_FILEPATH);
 
         for (Configuration configuration : texasUnmarshalledConfigurations.getConfigurationList()) {
-            configuration.getTest_Holder().getTestList().clear();
-            configuration.getTest_Holder().getTestList().addAll(texasConfigTemplate.getTest_Holder().getTestList());
+            configuration.getTests().getTestList().clear();
+            configuration.getTests().getTestList().addAll(texasConfigTemplate.getTests().getTestList());
         }
 
         DCSUtilityMarshaller dcsUtilityMarshaller = new DCSUtilityMarshaller();

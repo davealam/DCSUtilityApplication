@@ -55,7 +55,6 @@ public class CSVImportProducts {
                 for(int i = 0; i < configurationToBeAddedList.size(); i++) {
                     System.out.println("List contents: " + configurationToBeAddedList.get(i));
                 }
-
             }
 
             //Return ArrayList of Configuration objects to be added to Configurations

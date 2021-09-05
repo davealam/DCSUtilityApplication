@@ -101,7 +101,7 @@ public class Configuration {
 
 
     //Getters
-    public Tests getTest_Holder() {
+    public Tests getTests() {
         return tests;
     }
 

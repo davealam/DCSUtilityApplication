@@ -1,6 +1,7 @@
 package dalam.dcsutilitymodel.functionality;
 
 import dalam.dcsutilitymodel.spcobjects.configurations.Configurations;
+import dalam.dcsutilitymodel.spcobjects.configurations.configuration.Configuration;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.Unmarshaller;
 
@@ -13,15 +14,32 @@ public class DCSUtilityUnmarshaller {
 
     public Configurations unmarshallConfigurations(String configurationsFilePath) {
         try {
-            //Unmarshall and read from Configs XML
+            //Unmarshall and read from Configurations XML
             File configurations = new File(configurationsFilePath);
-            JAXBContext jaxbContext = JAXBContext.newInstance(Configurations.class);
-            Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+            JAXBContext configurationsContext = JAXBContext.newInstance(Configurations.class);
+            Unmarshaller configurationsUnmarshaller = configurationsContext.createUnmarshaller();
 
-            //Return unmarshalled Configurations object
-            return (Configurations) unmarshaller.unmarshal(configurations);
+            //Cast and return unmarshalled Configurations Object
+            return (Configurations) configurationsUnmarshaller.unmarshal(configurations);
 
         }catch(Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public Configuration unmarshallConfiguration(String configurationFilePath) {
+        try {
+            //Unmarshall and read from Configuration xml
+            File configuration = new File(configurationFilePath);
+            JAXBContext configurationContext = JAXBContext.newInstance(Configuration.class);
+            Unmarshaller configurationUnmarshaller = configurationContext.createUnmarshaller();
+
+            //Cast and return unmarshalled Configuration Object
+            return (Configuration) configurationUnmarshaller.unmarshal(configuration);
+
+        } catch(Exception e) {
             e.printStackTrace();
         }
 
