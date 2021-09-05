@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<TabPane fx:id="tabPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="319.0" prefWidth="555.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dalam.dcsutilitycontroller.MainViewController">
+  <tabs>
+    <Tab text="Standardize Product Tests">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                   <TextField fx:id="templateConfigurationFilePath" layoutX="135.0" layoutY="77.0" prefHeight="25.0" prefWidth="284.0" />
+                   <Button fx:id="templateConfigurationChooseButton" layoutX="425.0" layoutY="77.0" mnemonicParsing="false" text="Choose..." />
+                   <Label fx:id="templateConfigurationLabel" layoutX="131.0" layoutY="54.0" text="Please specify path to TEMPLATE CONFIGURATION File:" />
+
+                   <TextField fx:id="fullConfigurationsFilePath" layoutX="135.0" layoutY="143.0" prefHeight="25.0" prefWidth="284.0" />
+                   <Button fx:id="fullConfigurationsChooseButton" layoutX="425.0" layoutY="143.0" mnemonicParsing="false" onAction="#chooseTemplateConfigurationButtonClick" text="Choose..." />
+                   <Label fx:id="fullConfigurationsLabel" layoutX="98.0" layoutY="120.0" text="Please specify path to FULL CONFIGURATIONS file to be MODIFIED:" />
+
+                   <Button fx:id="submitButton" layoutX="489.0" layoutY="251.0" mnemonicParsing="false" text="Submit" />
+               </children></AnchorPane>
+      </content>
+    </Tab>
+    <Tab text="Generate Configurations File">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+      </content>
+    </Tab>
+  </tabs>
+</TabPane>

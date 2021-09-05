@@ -1,0 +1,502 @@
+<Configuration Name="2.0 BLK 20psi 316821 C" State="1" Version="5.1" ProgID="InfinityQS.ProFicient.DCS.Engine.Extended" RunMode="Service">
+  <DataSource SourceType="0">
+    <DSN>560_SPC</DSN>
+  </DataSource>
+  <SubgroupSize Piece="5" WithinPiece="0" />
+  <Timers TimersEnabled="15">
+    <SubgroupTime>
+      <TimePeriod>
+        <Frequency Enabled="1" Unit="0" Interval="8" />
+        <Duration Enabled="0" Unit="1" Interval="15" />
+      </TimePeriod>
+    </SubgroupTime>
+    <WithinPieceTime>
+      <TimePeriod>
+        <Frequency Enabled="0" Unit="1" Interval="15" />
+        <Duration Enabled="0" Unit="1" Interval="15" />
+      </TimePeriod>
+    </WithinPieceTime>
+    <RetryTime>
+      <TimePeriod>
+        <Frequency Enabled="0" Unit="1" Interval="15" />
+        <Duration Enabled="0" Unit="1" Interval="15" />
+      </TimePeriod>
+    </RetryTime>
+    <IdleTime>
+      <TimePeriod>
+        <Frequency Enabled="0" Unit="0" Interval="50" />
+        <Duration Enabled="0" Unit="1" Interval="15" />
+      </TimePeriod>
+    </IdleTime>
+  </Timers>
+  <Trigger>
+    <Conditions />
+  </Trigger>
+  <Descriptors>
+    <Descriptor>
+      <Type>1</Type>
+      <Group>Laminator-Online</Group>
+      <Item Prompt="">Chemical Dispense</Item>
+    </Descriptor>
+    <Descriptor>
+      <Type>0</Type>
+      <Group>Product Description</Group>
+      <Item Prompt="">2.0 BLK 20 psi</Item>
+    </Descriptor>
+  </Descriptors>
+  <Tests>
+    <Test>
+      <Group>Wonderware Tag</Group>
+      <Item>Running_Wet_Density</Item>
+      <Value>%DMS(Value, DMS560\Running_Wet_Density)</Value>
+      <DefectCode>
+      </DefectCode>
+      <Condition Evaluation="6" Include="1" Enabled="0">
+      </Condition>
+      <ProductionRate>0</ProductionRate>
+    </Test>
+    <Test>
+      <Group>Wonderware Tag</Group>
+      <Item>Product_SAP_Number</Item>
+      <Value>%DMS(Value, DMS560\Product_SAP_Number)</Value>
+      <DefectCode>
+      </DefectCode>
+      <Condition Evaluation="6" Include="1" Enabled="0">
+      </Condition>
+      <ProductionRate>0</ProductionRate>
+    </Test>
+    <Test>
+      <Group>Wonderware Tag</Group>
+      <Item>Facer_Temperature_Top</Item>
+      <Value>%DMS(Value, DMS560\Facer_Temperature_Top)</Value>
+      <DefectCode>
+      </DefectCode>
+      <Condition Evaluation="6" Include="1" Enabled="0">
+      </Condition>
+      <ProductionRate>0</ProductionRate>
+    </Test>
+    <Test>
+      <Group>Wonderware Tag</Group>
+      <Item>Facer_Temperature_Bottom</Item>
+      <Value>%DMS(Value, DMS560\Facer_Temperature_Bottom)</Value>
+      <DefectCode>
+      </DefectCode>
+      <Condition Evaluation="6" Include="1" Enabled="0">
+      </Condition>
+      <ProductionRate>0</ProductionRate>
+    </Test>
+    <Test>
+      <Group>Wonderware Tag</Group>
+      <Item>Laminator_Conveyor_Speed</Item>
+      <Value>%DMS(Value, DMS560\Laminator_Conveyor_Speed)</Value>
+      <DefectCode>
+      </DefectCode>
+      <Condition Evaluation="6" Include="1" Enabled="0">
+      </Condition>
+      <ProductionRate>0</ProductionRate>
+    </Test>
+    <Test>
+      <Group>Wonderware Tag</Group>
+      <Item>MX2_Poly_Temperature</Item>
+      <Value>%DMS(Value, DMS560\MX2_Poly_Temperature)</Value>
+      <DefectCode>
+      </DefectCode>
+      <Condition Evaluation="6" Include="1" Enabled="0">
+      </Condition>
+      <ProductionRate>0</ProductionRate>
+    </Test>
+    <Test>
+      <Group>Wonderware Tag</Group>
+      <Item>MX1_Poly_Temperature</Item>
+      <Value>%DMS(Value, DMS560\MX1_Poly_Temperature)</Value>
+      <DefectCode>
+      </DefectCode>
+      <Condition Evaluation="6" Include="1" Enabled="0">
+      </Condition>
+      <ProductionRate>0</ProductionRate>
+    </Test>
+    <Test>
+      <Group>Wonderware Tag</Group>
+      <Item>MX1_Iso_Temperature</Item>
+      <Value>%DMS(Value, DMS560\MX1_Iso_Temperature)</Value>
+      <DefectCode>
+      </DefectCode>
+      <Condition Evaluation="6" Include="1" Enabled="0">
+      </Condition>
+      <ProductionRate>0</ProductionRate>
+    </Test>
+    <Test>
+      <Group>Wonderware Tag</Group>
+      <Item>MX2_Iso_Temperature</Item>
+      <Value>%DMS(Value, DMS560\MX2_Iso_Temperature)</Value>
+      <DefectCode>
+      </DefectCode>
+      <Condition Evaluation="6" Include="1" Enabled="0">
+      </Condition>
+      <ProductionRate>0</ProductionRate>
+    </Test>
+    <Test>
+      <Group>Wonderware Tag</Group>
+      <Item>HPHX1_Pentane_Outlet_Temperatur</Item>
+      <Value>%DMS(Value, DMS560\HPHX1_Pentane_Outlet_Temperature)</Value>
+      <DefectCode>
+      </DefectCode>
+      <Condition Evaluation="6" Include="1" Enabled="0">
+      </Condition>
+      <ProductionRate>0</ProductionRate>
+    </Test>
+    <Test>
+      <Group>Wonderware Tag</Group>
+      <Item>HPHX2_Pentane_Outlet_Temperatur</Item>
+      <Value>%DMS(Value, DMS560\HPHX2_Pentane_Outlet_Temperature)</Value>
+      <DefectCode>
+      </DefectCode>
+      <Condition Evaluation="6" Include="1" Enabled="0">
+      </Condition>
+      <ProductionRate>0</ProductionRate>
+    </Test>
+    <Test>
+      <Group>Wonderware Tag</Group>
+      <Item>MX_Total_Flow</Item>
+      <Value>%DMS(Value, DMS560\MX_Total_Flow)</Value>
+      <DefectCode>
+      </DefectCode>
+      <Condition Evaluation="6" Include="1" Enabled="0">
+      </Condition>
+      <ProductionRate>0</ProductionRate>
+    </Test>
+    <Test>
+      <Group>Calculation Tag</Group>
+      <Item>MX1_Pentane%_Actual</Item>
+      <Value>%DMS(Value, DMS560\MX1_Pentane_Flow)/(%DMS(Value, DMS560\MX1_Pentane_Flow)+%DMS(Value, DMS560\MX1_Poly_Flow))*100</Value>
+      <DefectCode>
+      </DefectCode>
+      <Condition Evaluation="6" Include="1" Enabled="0">
+      </Condition>
+      <ProductionRate>0</ProductionRate>
+    </Test>
+    <Test>
+      <Group>Calculation Tag</Group>
+      <Item>MX2_Pentane%_Actual</Item>
+      <Value>%DMS(Value, DMS560\MX2_Pentane_Flow)/(%DMS(Value, DMS560\MX2_Pentane_Flow)+%DMS(Value, DMS560\MX2_Poly_Flow))*100</Value>
+      <DefectCode>
+      </DefectCode>
+      <Condition Evaluation="6" Include="1" Enabled="0">
+      </Condition>
+      <ProductionRate>0</ProductionRate>
+    </Test>
+    <Test>
+      <Group>Wonderware Tag</Group>
+      <Item>Laminator_Upper_Temp</Item>
+      <Value>%DMS(Value, DMS560\Laminator_Heat_Temperature)</Value>
+      <DefectCode>
+      </DefectCode>
+      <Condition Evaluation="6" Include="1" Enabled="0">
+      </Condition>
+      <ProductionRate>0</ProductionRate>
+    </Test>
+    <Test>
+      <Group>Wonderware Tag</Group>
+      <Item>Mahlo_Board_Thickness</Item>
+      <Value>%DMS(Value, DMS560\Mahlo_Board_Thickness)</Value>
+      <DefectCode>
+      </DefectCode>
+      <Condition Evaluation="6" Include="1" Enabled="0">
+      </Condition>
+      <ProductionRate>0</ProductionRate>
+    </Test>
+    <Test>
+      <Group>Wonderware Tag</Group>
+      <Item>HPHX1_Iso_Outlet_Temperature</Item>
+      <Value>%DMS(Value, DMS560\HPHX1_Iso_Outlet_Temperature)</Value>
+      <DefectCode>
+      </DefectCode>
+      <Condition Evaluation="6" Include="1" Enabled="0">
+      </Condition>
+      <ProductionRate>0</ProductionRate>
+    </Test>
+    <Test>
+      <Group>Wonderware Tag</Group>
+      <Item>HPHX1_Poly_Outlet_Temperature</Item>
+      <Value>%DMS(Value, DMS560\HPHX1_Poly_Outlet_Temperature)</Value>
+      <DefectCode>
+      </DefectCode>
+      <Condition Evaluation="6" Include="1" Enabled="0">
+      </Condition>
+      <ProductionRate>0</ProductionRate>
+    </Test>
+    <Test>
+      <Group>Wonderware Tag</Group>
+      <Item>HPHX2_Iso_Outlet_Temperature</Item>
+      <Value>%DMS(Value, DMS560\HPHX2_Iso_Outlet_Temperature)</Value>
+      <DefectCode>
+      </DefectCode>
+      <Condition Evaluation="6" Include="1" Enabled="0">
+      </Condition>
+      <ProductionRate>0</ProductionRate>
+    </Test>
+    <Test>
+      <Group>Wonderware Tag</Group>
+      <Item>HPHX2_Poly_Outlet_Temperature</Item>
+      <Value>%DMS(Value, DMS560\HPHX2_Poly_Outlet_Temperature)</Value>
+      <DefectCode>
+      </DefectCode>
+      <Condition Evaluation="6" Include="1" Enabled="0">
+      </Condition>
+      <ProductionRate>0</ProductionRate>
+    </Test>
+    <Test>
+      <Group>Wonderware Tag</Group>
+      <Item>Mahlo_Core_Density</Item>
+      <Value>%DMS(Value, DMS560\Mahlo_Core_Density)</Value>
+      <DefectCode>
+      </DefectCode>
+      <Condition Evaluation="6" Include="1" Enabled="0">
+      </Condition>
+      <ProductionRate>0</ProductionRate>
+    </Test>
+    <Test>
+      <Group>Wonderware Tag</Group>
+      <Item>Mahlo_Board_Weight</Item>
+      <Value>%DMS(Value, DMS560\Mahlo_Board_Weight)</Value>
+      <DefectCode>
+      </DefectCode>
+      <Condition Evaluation="6" Include="1" Enabled="0">
+      </Condition>
+      <ProductionRate>0</ProductionRate>
+    </Test>
+    <Test>
+      <Group>Wonderware Tag</Group>
+      <Item>MX2_Iso_Pressure</Item>
+      <Value>%DMS(Value, DMS560\MX2_Iso_Pressure)</Value>
+      <DefectCode>
+      </DefectCode>
+      <Condition Evaluation="6" Include="1" Enabled="0">
+      </Condition>
+      <ProductionRate>0</ProductionRate>
+    </Test>
+    <Test>
+      <Group>Calculation Tag</Group>
+      <Item>MX1_Total_Flow</Item>
+      <Value>%DMS(Value, DMS560\MX1_Poly_Flow)+%DMS(Value, DMS560\MX1_Iso_Flow)+%DMS(Value, DMS560\MX1_Pentane_Flow)</Value>
+      <DefectCode>
+      </DefectCode>
+      <Condition Evaluation="6" Include="1" Enabled="0">
+      </Condition>
+      <ProductionRate>0</ProductionRate>
+    </Test>
+    <Test>
+      <Group>Calculation Tag</Group>
+      <Item>MX2_Total_Flow</Item>
+      <Value>%DMS(Value, DMS560\MX2_Poly_Flow)+%DMS(Value, DMS560\MX2_Pentane_Flow)+%DMS(Value, DMS560\MX2_Iso_Flow)</Value>
+      <DefectCode>
+      </DefectCode>
+      <Condition Evaluation="6" Include="1" Enabled="0">
+      </Condition>
+      <ProductionRate>0</ProductionRate>
+    </Test>
+    <Test>
+      <Group>Wonderware Tag</Group>
+      <Item>MX1_Iso_Pressure</Item>
+      <Value>%DMS(Value, DMS560\MX1_Iso_Pressure)</Value>
+      <DefectCode>
+      </DefectCode>
+      <Condition Evaluation="6" Include="1" Enabled="0">
+      </Condition>
+      <ProductionRate>0</ProductionRate>
+    </Test>
+    <Test>
+      <Group>Wonderware Tag</Group>
+      <Item>MX1_Pentane_Flow</Item>
+      <Value>%DMS(Value, DMS560\MX1_Pentane_Flow)</Value>
+      <DefectCode>
+      </DefectCode>
+      <Condition Evaluation="6" Include="1" Enabled="0">
+      </Condition>
+      <ProductionRate>0</ProductionRate>
+    </Test>
+    <Test>
+      <Group>Wonderware Tag</Group>
+      <Item>MX1_Poly_Flow</Item>
+      <Value>%DMS(Value, DMS560\MX1_Poly_Flow)</Value>
+      <DefectCode>
+      </DefectCode>
+      <Condition Evaluation="6" Include="1" Enabled="0">
+      </Condition>
+      <ProductionRate>0</ProductionRate>
+    </Test>
+    <Test>
+      <Group>Wonderware Tag</Group>
+      <Item>MX1_Iso_Flow</Item>
+      <Value>%DMS(Value, DMS560\MX1_Iso_Flow)</Value>
+      <DefectCode>
+      </DefectCode>
+      <Condition Evaluation="6" Include="1" Enabled="0">
+      </Condition>
+      <ProductionRate>0</ProductionRate>
+    </Test>
+    <Test>
+      <Group>Wonderware Tag</Group>
+      <Item>MX1_Pentane_Pressure</Item>
+      <Value>%DMS(Value, DMS560\MX1_Pentane_Pressure)</Value>
+      <DefectCode>
+      </DefectCode>
+      <Condition Evaluation="6" Include="1" Enabled="0">
+      </Condition>
+      <ProductionRate>0</ProductionRate>
+    </Test>
+    <Test>
+      <Group>Wonderware Tag</Group>
+      <Item>MX1_Poly_Pressure</Item>
+      <Value>%DMS(Value, DMS560\MX1_Poly_Pressure)</Value>
+      <DefectCode>
+      </DefectCode>
+      <Condition Evaluation="6" Include="1" Enabled="0">
+      </Condition>
+      <ProductionRate>0</ProductionRate>
+    </Test>
+    <Test>
+      <Group>Wonderware Tag</Group>
+      <Item>MX2_Iso_Flow</Item>
+      <Value>%DMS(Value, DMS560\MX2_Iso_Flow)</Value>
+      <DefectCode>
+      </DefectCode>
+      <Condition Evaluation="6" Include="1" Enabled="0">
+      </Condition>
+      <ProductionRate>0</ProductionRate>
+    </Test>
+    <Test>
+      <Group>Wonderware Tag</Group>
+      <Item>MX2_Pentane_Flow</Item>
+      <Value>%DMS(Value, DMS560\MX2_Pentane_Flow)</Value>
+      <DefectCode>
+      </DefectCode>
+      <Condition Evaluation="6" Include="1" Enabled="0">
+      </Condition>
+      <ProductionRate>0</ProductionRate>
+    </Test>
+    <Test>
+      <Group>Wonderware Tag</Group>
+      <Item>MX2_Pentane_Pressure</Item>
+      <Value>%DMS(Value, DMS560\MX2_Pentane_Pressure)</Value>
+      <DefectCode>
+      </DefectCode>
+      <Condition Evaluation="6" Include="1" Enabled="0">
+      </Condition>
+      <ProductionRate>0</ProductionRate>
+    </Test>
+    <Test>
+      <Group>Wonderware Tag</Group>
+      <Item>MX2_Poly_Flow</Item>
+      <Value>%DMS(Value, DMS560\MX2_Poly_Flow)</Value>
+      <DefectCode>
+      </DefectCode>
+      <Condition Evaluation="6" Include="1" Enabled="0">
+      </Condition>
+      <ProductionRate>0</ProductionRate>
+    </Test>
+    <Test>
+      <Group>Wonderware Tag</Group>
+      <Item>MX2_Poly_Pressure</Item>
+      <Value>%DMS(Value, DMS560\MX2_Poly_Pressure)</Value>
+      <DefectCode>
+      </DefectCode>
+      <Condition Evaluation="6" Include="1" Enabled="0">
+      </Condition>
+      <ProductionRate>0</ProductionRate>
+    </Test>
+    <Test>
+      <Group>Wonderware Tag</Group>
+      <Item>Mahlo_Top_Facer_Weight</Item>
+      <Value>%DMS(Value, DMS560\Mahlo_Top_Facer_Weight)</Value>
+      <DefectCode>
+      </DefectCode>
+      <Condition Evaluation="6" Include="1" Enabled="0">
+      </Condition>
+      <ProductionRate>0</ProductionRate>
+    </Test>
+    <Test>
+      <Group>Wonderware Tag</Group>
+      <Item>Mahlo_Bottom_Facer_Weight</Item>
+      <Value>%DMS(Value, DMS560\Mahlo_Bottom_Facer_Weight)</Value>
+      <DefectCode>
+      </DefectCode>
+      <Condition Evaluation="6" Include="1" Enabled="0">
+      </Condition>
+      <ProductionRate>0</ProductionRate>
+    </Test>
+    <Test>
+      <Group>Calculation Tag</Group>
+      <Item>Side_To_Side_WW</Item>
+      <Value>-%DMS(Value, DMS560\Mahlo_Zone_0_Board_Thickness)+%DMS(Value, DMS560\Mahlo_Zone_7_Board_Thickness)</Value>
+      <DefectCode>
+      </DefectCode>
+      <Condition Evaluation="6" Include="1" Enabled="0">
+      </Condition>
+      <ProductionRate>0</ProductionRate>
+    </Test>
+    <Test>
+      <Group>Wonderware Tag</Group>
+      <Item>Laminator_Height_Left</Item>
+      <Value>%DMS(Value, DMS560\Laminator_Height_Front_Left)</Value>
+      <DefectCode>
+      </DefectCode>
+      <Condition Evaluation="6" Include="1" Enabled="0">
+      </Condition>
+      <ProductionRate>0</ProductionRate>
+    </Test>
+    <Test>
+      <Group>Wonderware Tag</Group>
+      <Item>Laminator_Height_Right</Item>
+      <Value>%DMS(Value, DMS560\Laminator_Height_Front_Right)</Value>
+      <DefectCode>
+      </DefectCode>
+      <Condition Evaluation="6" Include="1" Enabled="0">
+      </Condition>
+      <ProductionRate>0</ProductionRate>
+    </Test>
+    <Test>
+      <Group>Wonderware Tag</Group>
+      <Item>Laminator_Height_Exit_Left</Item>
+      <Value>%DMS(Value, DMS560\Laminator_Height_Exit_Left)</Value>
+      <DefectCode>
+      </DefectCode>
+      <Condition Evaluation="6" Include="1" Enabled="0">
+      </Condition>
+      <ProductionRate>0</ProductionRate>
+    </Test>
+    <Test>
+      <Group>Wonderware Tag</Group>
+      <Item>Laminator_Height_Exit_Right</Item>
+      <Value>%DMS(Value, DMS560\Laminator_Height_Exit_Right)</Value>
+      <DefectCode>
+      </DefectCode>
+      <Condition Evaluation="6" Include="1" Enabled="0">
+      </Condition>
+      <ProductionRate>0</ProductionRate>
+    </Test>
+    <Test>
+      <Group>Wonderware Tag</Group>
+      <Item>Plant_Barometric_Pressure</Item>
+      <Value>%DMS(Value, DMS560\Plant_Barometric_Pressure)</Value>
+      <DefectCode>
+      </DefectCode>
+      <Condition Evaluation="6" Include="1" Enabled="0">
+      </Condition>
+      <ProductionRate>0</ProductionRate>
+    </Test>
+  </Tests>
+  <Conditions>
+    <Condition Type="0">
+      <Value1>%DMS(Value, DMS560\Pour_Table_Active)</Value1>
+      <Value2>1</Value2>
+      <Evaluation>1</Evaluation>
+    </Condition>
+    <Condition Type="0">
+      <Value1>%DMS(Value, DMS560\Product_SAP_Number)</Value1>
+      <Value2>316821</Value2>
+      <Evaluation>1</Evaluation>
+    </Condition>
+  </Conditions>
+  <Feedbacks />
+</Configuration>
