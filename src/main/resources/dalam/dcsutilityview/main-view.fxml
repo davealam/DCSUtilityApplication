@@ -1,35 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<TabPane fx:id="tabPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="333.0" prefWidth="555.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dalam.dcsutilitycontroller.MainViewController">
+<TabPane fx:id="tabPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="375.0" prefWidth="555.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dalam.dcsutilitycontroller.MainViewController">
   <tabs>
     <Tab text="Standardize Product Tests">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                   <TextField fx:id="templateConfigurationFilePath" layoutX="134.0" layoutY="100.0" prefHeight="25.0" prefWidth="284.0" />
-                   <Button fx:id="templateConfigurationChooseButton" layoutX="424.0" layoutY="100.0" mnemonicParsing="false" onAction="#chooseTemplateConfigurationButtonClick" text="Choose..." />
+                   <TextField fx:id="templateConfigurationFilePath" layoutX="134.0" layoutY="121.0" prefHeight="25.0" prefWidth="284.0" />
+                   <Button fx:id="templateConfigurationChooseButton" layoutX="424.0" layoutY="120.0" mnemonicParsing="false" onAction="#chooseTemplateConfigurationButtonClick" text="Choose..." />
 
-                   <TextField fx:id="configurationsFilePath" layoutX="134.0" layoutY="166.0" prefHeight="25.0" prefWidth="284.0" />
-                   <Button fx:id="fullConfigurationsChooseButton" layoutX="425.0" layoutY="167.0" mnemonicParsing="false" onAction="#chooseConfigurationsButtonClick" text="Choose..." />
-                  <Button fx:id="logOutButton" layoutX="423.0" layoutY="251.0" mnemonicParsing="false" onAction="#logOutButtonClick" text="Log Out" />
+                   <TextField fx:id="configurationsFilePath" layoutX="134.0" layoutY="219.0" prefHeight="25.0" prefWidth="284.0" />
+                   <Button fx:id="fullConfigurationsChooseButton" layoutX="425.0" layoutY="219.0" mnemonicParsing="false" onAction="#chooseConfigurationsButtonClick" text="Choose..." />
+                  <Button fx:id="logOutButton" layoutX="423.0" layoutY="307.0" mnemonicParsing="false" onAction="#logOutButtonClick" text="Log Out" />
 
-                   <Button fx:id="submitButton" layoutX="489.0" layoutY="251.0" mnemonicParsing="false" onAction="#submitButtonClick" text="Submit" />
-                   <Label fx:id="fullConfigurationsLabel" layoutX="97.0" layoutY="143.0" text="Please specify path to FULL CONFIGURATIONS file to be MODIFIED:" />
-                   <Label fx:id="templateConfigurationLabel" layoutX="130.0" layoutY="77.0" text="Please specify path to TEMPLATE CONFIGURATION File:" />
-                  <Label layoutX="180.0" layoutY="33.0" text="DCS Utility Application">
+                   <Button fx:id="submitButton" layoutX="489.0" layoutY="307.0" mnemonicParsing="false" onAction="#submitButtonClick" text="Submit" />
+                   <Label fx:id="fullConfigurationsLabel" layoutX="97.0" layoutY="196.0" text="Please specify path to FULL CONFIGURATIONS file to be MODIFIED:" />
+                   <Label fx:id="templateConfigurationLabel" layoutX="130.0" layoutY="98.0" text="Please specify path to TEMPLATE CONFIGURATION file:" />
+                  <Label layoutX="180.0" layoutY="13.0" text="DCS Utility Application">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="confirmationLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="97.0" layoutY="215.0" prefHeight="20.0" prefWidth="359.0">
+                  <Label fx:id="confirmationLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="98.0" layoutY="53.0" prefHeight="20.0" prefWidth="359.0">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -39,7 +41,30 @@
     </Tab>
     <Tab text="Generate Configurations File">
       <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                   <Button fx:id="csvChooseButtonTAB2" layoutX="424.0" layoutY="86.0" mnemonicParsing="false" text="Choose..." />
+                   <Button fx:id="templateConfigurationChooseButtonTAB2" layoutX="424.0" layoutY="155.0" mnemonicParsing="false" text="Choose..." />
+                   <Button fx:id="configurationsFilePathChooseButtonTAB2" layoutX="424.0" layoutY="258.0" mnemonicParsing="false" text="Choose..." />
+                   <Button fx:id="logOutButtonTAB2" layoutX="423.0" layoutY="307.0" mnemonicParsing="false" text="Log Out" />
+                   <Button fx:id="submitButtonTAB2" layoutX="489.0" layoutY="307.0" mnemonicParsing="false" text="Submit" />
+                   <TextField fx:id="csvFilePathTAB2" layoutX="134.0" layoutY="87.0" prefHeight="25.0" prefWidth="284.0" />
+                   <TextField fx:id="templateConfigurationFilePathTAB2" layoutX="134.0" layoutY="156.0" prefHeight="25.0" prefWidth="284.0" />
+                   <TextField fx:id="configurationsFilePathTAB2" layoutX="134.0" layoutY="258.0" prefHeight="25.0" prefWidth="284.0" promptText="To enable, check 'Append to existing'" />
+                   <CheckBox fx:id="appendToExistingCheckBoxTAB2" onAction="#appendToExistingCheckBoxClick" layoutX="218.0" layoutY="207.0" mnemonicParsing="false" text="Append to existing" />
+
+                   <Label layoutX="180.0" layoutY="13.0" text="DCS Utility Application">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                   </Label>
+
+                  <Label layoutX="197.0" layoutY="64.0" text="Please specify path to CSV file:" />
+                  <Label layoutX="132.0" layoutY="133.0" text="Please specify path to TEMPLATE CONFIGURATION file:" />
+                  <Label fx:id="configurationsLabelTAB2" layoutX="101.0" layoutY="234.0" text="Please specify path to FULL CONFIGURATIONS file to be append to:" />
+                  <Separator layoutX="78.0" layoutY="196.0" prefWidth="400.0" />
+                  <Label fx:id="confirmationLabelTAB2" layoutX="100.0" layoutY="39.0" prefHeight="20.0" prefWidth="359.0" />
+               </children></AnchorPane>
       </content>
     </Tab>
   </tabs>

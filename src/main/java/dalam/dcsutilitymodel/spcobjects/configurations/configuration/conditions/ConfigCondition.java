@@ -20,8 +20,8 @@ public class ConfigCondition {
     private String type;
 
     //Constructors
-    public ConfigCondition(String type, String value1, String value2, String evaluation) {
-        this.type = type;
+    public ConfigCondition(String value1, String value2, String evaluation) {
+        this.type = "0"; //Default value set MAY NEED TO CHANGE
         this.value1 = value1;
         this.value2 = value2;
         this.evaluation = evaluation;

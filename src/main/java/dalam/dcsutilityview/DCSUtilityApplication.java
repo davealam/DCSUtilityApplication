@@ -16,14 +16,16 @@ public class DCSUtilityApplication extends Application {
     public void start(Stage primaryStage) throws IOException {
         this.stage = primaryStage;
         primaryStage.setResizable(false);
-//        FXMLLoader fxmlLoader = new FXMLLoader(DCSUtilityApplication.class.getResource("login-view.fxml"));
-//        Scene scene = new Scene(fxmlLoader.load());
-
         Parent root = FXMLLoader.load(getClass().getResource("login-view.fxml"));
         primaryStage.setTitle("DCS Utility Application");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
 
+    }
+
+    @Override
+    public void stop() {
+        stage.close();
     }
 
     public void changeScene(String viewFXML) throws IOException {

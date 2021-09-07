@@ -54,4 +54,10 @@ public class LogInViewController {
         }
     }
 
+    @FXML
+    public void cancelButtonClick() {
+        DCSUtilityApplication dcsUtilityApplication = new DCSUtilityApplication();
+        dcsUtilityApplication.stop();
+    }
+
 }

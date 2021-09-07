@@ -12,7 +12,7 @@ public class DCSUtilityUnmarshaller {
     //Constructors
     public DCSUtilityUnmarshaller() {}
 
-    public Configurations unmarshallConfigurations(String configurationsFilePath) {
+    public static Configurations unmarshallConfigurations(String configurationsFilePath) {
         try {
             //Unmarshall and read from Configurations XML
             File configurations = new File(configurationsFilePath);
@@ -29,9 +29,9 @@ public class DCSUtilityUnmarshaller {
         return null;
     }
 
-    public Configuration unmarshallConfiguration(String configurationFilePath) {
+    public static Configuration unmarshallConfiguration(String configurationFilePath) {
         try {
-            //Unmarshall and read from Configuration xml
+            //Unmarshall and read from Configuration XML
             File configuration = new File(configurationFilePath);
             JAXBContext configurationContext = JAXBContext.newInstance(Configuration.class);
             Unmarshaller configurationUnmarshaller = configurationContext.createUnmarshaller();

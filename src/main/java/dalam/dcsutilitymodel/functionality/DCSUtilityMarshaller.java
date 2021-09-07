@@ -11,7 +11,7 @@ public class DCSUtilityMarshaller {
 
     public DCSUtilityMarshaller() {}
 
-    public String marshallConfigurations(Configurations configurationsToMarshall, String marshallFilePath) {
+    public static void marshallConfigurations(Configurations configurationsToMarshall, String marshallFilePath) {
 
         try {
 
@@ -25,7 +25,5 @@ public class DCSUtilityMarshaller {
         } catch (JAXBException e) {
             e.printStackTrace();
         }
-
-        return "Update complete";
     }
 }

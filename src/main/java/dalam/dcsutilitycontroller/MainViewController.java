@@ -3,10 +3,7 @@ package dalam.dcsutilitycontroller;
 import dalam.dcsutilitymodel.functionality.StandardizeTests;
 import dalam.dcsutilityview.DCSUtilityApplication;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TabPane;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -18,6 +15,7 @@ public class MainViewController {
     @FXML
     private TabPane tabPane;
 
+    //Standardize Product Tests tab
     @FXML
     private TextField templateConfigurationFilePath;
 
@@ -45,9 +43,48 @@ public class MainViewController {
     @FXML
     private Label confirmationLabel;
 
+    //Generate Configurations File tab
+    @FXML
+    private TextField csvFilePathTAB2;
+
+    @FXML
+    private Button csvChooseButtonTAB2;
+
+    @FXML
+    private TextField templateConfigurationFilePathTAB2;
+
+    @FXML
+    private Button templateConfigurationChooseButtonTAB2;
+
+    @FXML
+    private TextField configurationsFilePathTAB2;
+
+    @FXML
+    private Button configurationsFilePathChooseButtonTAB2;
+
+    @FXML
+    private Button submitButtonTAB2;
+
+    @FXML
+    private Button logOutButtonTAB2;
+
+    @FXML
+    private Label confirmationLabelTAB2;
+
+    @FXML
+    private CheckBox appendToExistingCheckBoxTAB2;
+
+    @FXML
+    private Label configurationsLabelTAB2;
+
     //File path String values
     private String templateConfigurationFilePathValue;
     private String configurationsFilePathValue;
+
+
+    public void initialize() {
+        disableAppend(true);
+    }
 
     @FXML
     //Choose Template Configuration file on button click
@@ -92,12 +129,13 @@ public class MainViewController {
 
             //Clear file path values after performing operations, in case of consecutive operations
             templateConfigurationFilePathValue = configurationsFilePathValue = null;
-            confirmationLabel.setText("Operation Completed Successfully!");
+            confirmationLabel.setText("Operation Successful");
         } else {
-            confirmationLabel.setText("Operation failed, please provide both file paths!");
+            confirmationLabel.setText("Please provide both file paths");
         }
     }
 
+    @FXML
     //Log user out to sign in screen
     public void logOutButtonClick() {
         DCSUtilityApplication dcsUtilityApplication = new DCSUtilityApplication();
@@ -106,5 +144,23 @@ public class MainViewController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    //Enable/Disable appending Configuration list to pre existing Configurations list
+    public void appendToExistingCheckBoxClick() {
+        if(appendToExistingCheckBoxTAB2.isSelected()) {
+            disableAppend(false);
+        } else {
+            disableAppend(true);
+        }
+    }
+
+    //Enable or disable 'Append to existing' feature based on supplied boolean value
+    public void disableAppend(boolean trueOrFalse) {
+        configurationsFilePathChooseButtonTAB2.setDisable(trueOrFalse);
+        configurationsLabelTAB2.setDisable(trueOrFalse);
+        configurationsFilePathTAB2.setDisable(trueOrFalse);
+
     }
 }
