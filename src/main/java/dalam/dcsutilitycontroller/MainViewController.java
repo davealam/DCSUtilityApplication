@@ -32,7 +32,7 @@ public class MainViewController {
     private Label fullConfigurationsLabel;
 
     @FXML
-    private Button fullConfigurationsChooseButton;
+    private Button configurationsChooseButton;
 
     @FXML
     private Button submitButton;
@@ -42,6 +42,8 @@ public class MainViewController {
 
     @FXML
     private Label confirmationLabel;
+
+
 
     //Generate Configurations File tab
     @FXML
@@ -80,6 +82,8 @@ public class MainViewController {
     //File path String values
     private String templateConfigurationFilePathValue;
     private String configurationsFilePathValue;
+    private String csvFilePathValue;
+    private String templateConfigurationFilePathValueTAB2;
 
 
     public void initialize() {
@@ -90,34 +94,51 @@ public class MainViewController {
     //Choose Template Configuration file on button click
     public void chooseTemplateConfigurationButtonClick() {
 
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Choose Template Configuration File");
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter(
-                "Configuration Template Files", "*.xml"));
-
-        Stage stage = (Stage) tabPane.getScene().getWindow();
-        File selectedFile = fileChooser.showOpenDialog(stage);
+        String templateConfigurationFilePathString =
+                generateFileChooser("Choose Template Configuration File",
+                        "Configuration Template Files",
+                        "*.xml");
 
         //Display selected file path and set chosen Template Configuration file's path
-        templateConfigurationFilePath.setText(selectedFile.getAbsolutePath());
-        this.templateConfigurationFilePathValue = selectedFile.getAbsolutePath();
+        templateConfigurationFilePath.setText(templateConfigurationFilePathString);
+        this.templateConfigurationFilePathValue = templateConfigurationFilePathString;
+    }
+
+    @FXML
+    //Choose Template Configuration file on button click (2nd Tab)
+    public void chooseTemplateConfigurationTAB2ButtonClick() {
+
+        String templateConfigurationFilePathString =
+                generateFileChooser("Choose Template Configuration File", "Template File", "*.xml");
+
+        //Display selected file path and set chosen Configuration template file's path
+        templateConfigurationFilePathTAB2.setText(templateConfigurationFilePathString);
+        this.templateConfigurationFilePathValueTAB2 = templateConfigurationFilePathString;
+
+    }
+
+    @FXML
+    //Choose CSV file on button click
+    public void chooseCSVButtonTAB2Click() {
+
+        String csvFilePathString =
+                generateFileChooser("Choose CSV File", "CSV File", "*.csv");
+
+        //Display selected file path and set chosen CSV file's path
+        csvFilePathTAB2.setText(csvFilePathString);
+        this.csvFilePathValue = csvFilePathString;
     }
 
     @FXML
     //Choose Configurations file on button click
     public void chooseConfigurationsButtonClick() {
 
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Choose Configurations File");
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter(
-                "Configurations Files", "*.xml"));
+        String configurationsFilePathString =
+                generateFileChooser("Choose Configurations File", "Configurations Files", "*.xml");
 
-        Stage stage = (Stage) tabPane.getScene().getWindow();
-        File selectedFile = fileChooser.showOpenDialog(stage);
-
-        //Set chosen Configurations file's path
-        configurationsFilePath.setText(selectedFile.getAbsolutePath());
-        this.configurationsFilePathValue = selectedFile.getAbsolutePath();
+        //Display selected file path and set chosen Configurations file's path
+        configurationsFilePath.setText(configurationsFilePathString);
+        this.configurationsFilePathValue = configurationsFilePathString;
     }
 
     @FXML
@@ -162,5 +183,19 @@ public class MainViewController {
         configurationsLabelTAB2.setDisable(trueOrFalse);
         configurationsFilePathTAB2.setDisable(trueOrFalse);
 
+    }
+
+    //Method that generates file chooser dialog pane
+    public String generateFileChooser(String title, String fileDescription, String fileExtension) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle(title);
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter(
+                fileDescription, fileExtension));
+
+        Stage stage = (Stage) tabPane.getScene().getWindow();
+        File selectedFile = fileChooser.showOpenDialog(stage);
+
+        //Return string value of chosen file's path
+        return selectedFile.getAbsolutePath().toString();
     }
 }
