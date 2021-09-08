@@ -31,9 +31,11 @@ public class LogInViewController {
 
     public void signInButtonClick() {
 
+        //Obtain entered username and password from text fields
         String username = userNameTextField.getText();
         String password = passwordField.getText();
 
+        //Check to see if combination is valid and authorized for access
         if(authorizationCheck(username, password)) {
             try {
                 DCSUtilityApplication dcsUtilityApplication = new DCSUtilityApplication();
@@ -42,7 +44,13 @@ public class LogInViewController {
                 e.printStackTrace();
             }
         } else {
+
+            //If wrong combination, flash message and clear fields for another try
             confirmationLabel.setText("Incorrect User ID/Password combination!");
+            username = password = null;
+            userNameTextField.clear();
+            passwordField.clear();
+
         }
     }
 

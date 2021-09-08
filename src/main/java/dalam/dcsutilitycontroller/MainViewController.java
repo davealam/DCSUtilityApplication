@@ -136,17 +136,22 @@ public class MainViewController {
             Configurations modifiedConfigurations =
                     standardizeTests.standardize(templateConfigurationFilePathValue, configurationsFilePathValue);
 
-            String saveFilePath = generateSaveDialog();
+            String fileSaveLocation = generateSaveDialog();
 
-            DCSUtilityMarshaller.marshallConfigurations(modifiedConfigurations, saveFilePath);
+            DCSUtilityMarshaller.marshallConfigurations(modifiedConfigurations, fileSaveLocation);
 
             //Clear file path values after performing operations, in case of consecutive operations
             templateConfigurationFilePathValue = configurationsFilePathValue = null;
 
-            confirmationLabel.setText("Operation Successful");
+            generateAlert("TESTS STANDARDIZED", "Operation Successful", "Resultant file saved to: " + fileSaveLocation);
+
+//            confirmationLabel.setText("Operation Successful");
 
         } else {
-            confirmationLabel.setText("Please provide both file paths");
+            generateAlert("TESTS NOT STANDARDIZED",
+                    "Operation Not Successful",
+                    "Something went wrong. Please make sure to include all required file paths and try again. " +
+                            "If the issue persists, please contact Dave Alam");
         }
     }
 
@@ -161,6 +166,8 @@ public class MainViewController {
         }
     }
 
+
+    //--------------------'Generate Configurations' tab (TAB2)-------------
     @FXML
     //Choose CSV file on button click
     public void chooseCSVButtonTAB2Click() {
@@ -173,8 +180,6 @@ public class MainViewController {
         this.csvFilePathValueTAB2 = csvFilePathString;
     }
 
-
-    //--------------------'Generate Configurations' tab (TAB2)-------------
     @FXML
     //Choose Template Configuration file on button click (2nd Tab)
     public void chooseTemplateConfigurationButtonTAB2Click() {
@@ -204,26 +209,35 @@ public class MainViewController {
     @FXML
     public void submitButtonTAB2Click() {
 
+        //If user wants Configuration Objects to be appended to existing full Configurations list
         if(appendToExistingCheckBoxTAB2.isSelected()) {
 
+            //Check to ensure that all required text fields picked up path values
             if((csvFilePathValueTAB2 != null)  && (templateConfigurationFilePathValueTAB2 != null) && (configurationsFilePathValueTAB2 != null)) {
-
                 MassImportProducts massImportProducts = new MassImportProducts();
 
+                //Generate configurationList from supplied CSV
                 ArrayList<Configuration> configurationList =
                         massImportProducts.generateConfigurationListFromCSV(csvFilePathValueTAB2, templateConfigurationFilePathValueTAB2);
 
+                //Append Configuration Objects from configurationlist to existing full Configurations file
                 Configurations modifiedConfigurations =
                         massImportProducts.returnAppendedConfigurationsFile(configurationList, configurationsFilePathValueTAB2);
 
+                //Obtain save location from user via popup dialog
                 String fileSaveLocation = generateSaveDialog();
 
+                //Marshall resultant modifiedConfigurations.xml file at the specified file name and location
                 DCSUtilityMarshaller.marshallConfigurations(modifiedConfigurations, fileSaveLocation);
 
-                confirmationLabelTAB2.setText("Operation successful");
+                //Clear path values for consecutive operations
+                csvFilePathValueTAB2 = templateConfigurationFilePathValueTAB2 = configurationsFilePathValueTAB2 = null;
+
+                //Generate confirmation message
+                generateAlert("CONFIGURATION APPENDED", "Operation Successful", "Resultant file saved to: " + fileSaveLocation);
             }
 
-        } else {
+        } else if ((csvFilePathValueTAB2 != null) && (templateConfigurationFilePathValueTAB2 != null)) {
 
             MassImportProducts massImportProducts = new MassImportProducts();
 
@@ -231,6 +245,7 @@ public class MainViewController {
                     massImportProducts.generateConfigurationListFromCSV(
                             csvFilePathValueTAB2, templateConfigurationFilePathValueTAB2);
 
+            //Return Configurations file with only the newly added Configuration Objects
             Configurations modifiedConfigurations =
                     massImportProducts.returnNewConfigurationsFile(configurationList);
 
@@ -238,7 +253,16 @@ public class MainViewController {
 
             DCSUtilityMarshaller.marshallConfigurations(modifiedConfigurations,fileSaveLocation);
 
-            confirmationLabelTAB2.setText("Operation successful");
+            csvFilePathTAB2 = templateConfigurationFilePathTAB2 = null;
+
+            generateAlert("NEW CONFIGURATIONS GENERATED", "Operation Successful", "Resultant file saved to: " + fileSaveLocation);
+
+        } else {
+
+            generateAlert("CONFIGURATIONS NOT GENERATED",
+                    "Operation Not Successful",
+                    "Something went wrong. Please make sure to include all required file paths and try again. " +
+                            "If the issue persists, please contact Dave Alam");
 
         }
     }
@@ -299,5 +323,13 @@ public class MainViewController {
         File saveFile = fileSave.showSaveDialog(stage);
 
         return saveFile.getAbsolutePath().toString();
+    }
+
+    public void generateAlert(String title, String header, String displayText) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(displayText);
+        alert.show();
     }
 }

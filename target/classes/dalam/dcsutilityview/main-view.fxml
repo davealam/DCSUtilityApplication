@@ -31,7 +31,7 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="confirmationLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="98.0" layoutY="53.0" prefHeight="20.0" prefWidth="359.0">
+                  <Label fx:id="confirmationLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="98.0" layoutY="53.0" prefHeight="20.0" prefWidth="359.0" textFill="#2c0be8">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -43,15 +43,15 @@
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                   <Button fx:id="csvChooseButtonTAB2" onAction="#chooseCSVButtonTAB2Click" layoutX="424.0" layoutY="86.0" mnemonicParsing="false" text="Choose..." />
-                   <Button fx:id="templateConfigurationChooseButtonTAB2" onAction="#chooseTemplateConfigurationButtonTAB2Click" layoutX="424.0" layoutY="155.0" mnemonicParsing="false" text="Choose..." />
-                   <Button fx:id="configurationsFilePathChooseButtonTAB2" onAction="#chooseConfigurationsButtonTAB2Click" layoutX="424.0" layoutY="258.0" mnemonicParsing="false" text="Choose..." />
-                   <Button fx:id="logOutButtonTAB2" onAction="#logOutButtonTAB2Click" layoutX="423.0" layoutY="307.0" mnemonicParsing="false" text="Log Out" />
-                   <Button fx:id="submitButtonTAB2" onAction="#submitButtonTAB2Click" layoutX="489.0" layoutY="307.0" mnemonicParsing="false" text="Submit" />
+                   <Button fx:id="csvChooseButtonTAB2" layoutX="424.0" layoutY="86.0" mnemonicParsing="false" onAction="#chooseCSVButtonTAB2Click" text="Choose..." />
+                   <Button fx:id="templateConfigurationChooseButtonTAB2" layoutX="424.0" layoutY="155.0" mnemonicParsing="false" onAction="#chooseTemplateConfigurationButtonTAB2Click" text="Choose..." />
+                   <Button fx:id="configurationsFilePathChooseButtonTAB2" layoutX="424.0" layoutY="258.0" mnemonicParsing="false" onAction="#chooseConfigurationsButtonTAB2Click" text="Choose..." />
+                   <Button fx:id="logOutButtonTAB2" layoutX="423.0" layoutY="307.0" mnemonicParsing="false" onAction="#logOutButtonTAB2Click" text="Log Out" />
+                   <Button fx:id="submitButtonTAB2" layoutX="489.0" layoutY="307.0" mnemonicParsing="false" onAction="#submitButtonTAB2Click" text="Submit" />
                    <TextField fx:id="csvFilePathTAB2" layoutX="134.0" layoutY="87.0" prefHeight="25.0" prefWidth="284.0" />
-                   <TextField fx:id="templateConfigurationFilePathTAB2" onAction="#chooseTemplateConfigurationButtonTAB2Click" layoutX="134.0" layoutY="156.0" prefHeight="25.0" prefWidth="284.0" />
+                   <TextField fx:id="templateConfigurationFilePathTAB2" layoutX="134.0" layoutY="156.0" onAction="#chooseTemplateConfigurationButtonTAB2Click" prefHeight="25.0" prefWidth="284.0" />
                    <TextField fx:id="configurationsFilePathTAB2" layoutX="134.0" layoutY="258.0" prefHeight="25.0" prefWidth="284.0" promptText="To enable, check 'Append to existing'" />
-                   <CheckBox fx:id="appendToExistingCheckBoxTAB2" onAction="#appendToExistingCheckBoxTAB2Click" layoutX="218.0" layoutY="207.0" mnemonicParsing="false" text="Append to existing" />
+                   <CheckBox fx:id="appendToExistingCheckBoxTAB2" layoutX="218.0" layoutY="207.0" mnemonicParsing="false" onAction="#appendToExistingCheckBoxTAB2Click" text="Append to existing" />
 
                    <Label layoutX="180.0" layoutY="13.0" text="DCS Utility Application">
                      <font>
@@ -63,7 +63,10 @@
                   <Label layoutX="132.0" layoutY="133.0" text="Please specify path to TEMPLATE CONFIGURATION file:" />
                   <Label fx:id="configurationsLabelTAB2" layoutX="101.0" layoutY="234.0" text="Please specify path to FULL CONFIGURATIONS file to be append to:" />
                   <Separator layoutX="78.0" layoutY="196.0" prefWidth="400.0" />
-                  <Label fx:id="confirmationLabelTAB2" layoutX="100.0" layoutY="39.0" prefHeight="20.0" prefWidth="359.0" />
+                  <Label fx:id="confirmationLabelTAB2" alignment="CENTER" contentDisplay="CENTER" layoutX="100.0" layoutY="39.0" prefHeight="20.0" prefWidth="359.0" textFill="#1603e1">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
                </children></AnchorPane>
       </content>
     </Tab>
