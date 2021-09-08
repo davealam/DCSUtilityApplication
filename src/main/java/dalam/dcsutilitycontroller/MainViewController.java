@@ -1,14 +1,21 @@
 package dalam.dcsutilitycontroller;
 
+import dalam.dcsutilitymodel.functionality.DCSUtilityMarshaller;
+import dalam.dcsutilitymodel.functionality.MassImportProducts;
 import dalam.dcsutilitymodel.functionality.StandardizeTests;
+import dalam.dcsutilitymodel.spcobjects.configurations.Configurations;
+import dalam.dcsutilitymodel.spcobjects.configurations.configuration.Configuration;
 import dalam.dcsutilityview.DCSUtilityApplication;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class MainViewController {
 
@@ -42,7 +49,6 @@ public class MainViewController {
 
     @FXML
     private Label confirmationLabel;
-
 
 
     //Generate Configurations File tab
@@ -82,14 +88,17 @@ public class MainViewController {
     //File path String values
     private String templateConfigurationFilePathValue;
     private String configurationsFilePathValue;
-    private String csvFilePathValue;
+    private String csvFilePathValueTAB2;
     private String templateConfigurationFilePathValueTAB2;
+    private String configurationsFilePathValueTAB2;
 
 
     public void initialize() {
         disableAppend(true);
     }
 
+
+    //--------------------'Standardize Tests' tab----------------------
     @FXML
     //Choose Template Configuration file on button click
     public void chooseTemplateConfigurationButtonClick() {
@@ -102,31 +111,6 @@ public class MainViewController {
         //Display selected file path and set chosen Template Configuration file's path
         templateConfigurationFilePath.setText(templateConfigurationFilePathString);
         this.templateConfigurationFilePathValue = templateConfigurationFilePathString;
-    }
-
-    @FXML
-    //Choose Template Configuration file on button click (2nd Tab)
-    public void chooseTemplateConfigurationTAB2ButtonClick() {
-
-        String templateConfigurationFilePathString =
-                generateFileChooser("Choose Template Configuration File", "Template File", "*.xml");
-
-        //Display selected file path and set chosen Configuration template file's path
-        templateConfigurationFilePathTAB2.setText(templateConfigurationFilePathString);
-        this.templateConfigurationFilePathValueTAB2 = templateConfigurationFilePathString;
-
-    }
-
-    @FXML
-    //Choose CSV file on button click
-    public void chooseCSVButtonTAB2Click() {
-
-        String csvFilePathString =
-                generateFileChooser("Choose CSV File", "CSV File", "*.csv");
-
-        //Display selected file path and set chosen CSV file's path
-        csvFilePathTAB2.setText(csvFilePathString);
-        this.csvFilePathValue = csvFilePathString;
     }
 
     @FXML
@@ -144,13 +128,23 @@ public class MainViewController {
     @FXML
     //Execute standardization of Configurations file based on tests in the supplied Template Configuration file
     public void submitButtonClick() {
+
         if(templateConfigurationFilePathValue != null && templateConfigurationFilePath != null) {
+
             StandardizeTests standardizeTests = new StandardizeTests();
-            standardizeTests.standardize(templateConfigurationFilePathValue, configurationsFilePathValue);
+
+            Configurations modifiedConfigurations =
+                    standardizeTests.standardize(templateConfigurationFilePathValue, configurationsFilePathValue);
+
+            String saveFilePath = generateSaveDialog();
+
+            DCSUtilityMarshaller.marshallConfigurations(modifiedConfigurations, saveFilePath);
 
             //Clear file path values after performing operations, in case of consecutive operations
             templateConfigurationFilePathValue = configurationsFilePathValue = null;
+
             confirmationLabel.setText("Operation Successful");
+
         } else {
             confirmationLabel.setText("Please provide both file paths");
         }
@@ -168,8 +162,90 @@ public class MainViewController {
     }
 
     @FXML
+    //Choose CSV file on button click
+    public void chooseCSVButtonTAB2Click() {
+
+        String csvFilePathString =
+                generateFileChooser("Choose CSV File", "CSV File", "*.csv");
+
+        //Display selected file path and set chosen CSV file's path
+        csvFilePathTAB2.setText(csvFilePathString);
+        this.csvFilePathValueTAB2 = csvFilePathString;
+    }
+
+
+    //--------------------'Generate Configurations' tab (TAB2)-------------
+    @FXML
+    //Choose Template Configuration file on button click (2nd Tab)
+    public void chooseTemplateConfigurationButtonTAB2Click() {
+
+        String templateConfigurationFilePathString =
+                generateFileChooser("Choose Template Configuration File", "Template File", "*.xml");
+
+        //Display selected file path and set chosen Configuration template file's path
+        templateConfigurationFilePathTAB2.setText(templateConfigurationFilePathString);
+        this.templateConfigurationFilePathValueTAB2 = templateConfigurationFilePathString;
+
+    }
+
+    @FXML
+    //Choose Configurations file to append to
+    public void chooseConfigurationsButtonTAB2Click() {
+
+        String configurationsFilePathString =
+                generateFileChooser("Choose Configurations File", "Configurations Files", "*.xml");
+
+        //Display selected file path and set chosen Configurations file's path
+        configurationsFilePathTAB2.setText(configurationsFilePathString);
+        this.configurationsFilePathValueTAB2 = configurationsFilePathString;
+    }
+
+    //Process files from submitted file paths
+    @FXML
+    public void submitButtonTAB2Click() {
+
+        if(appendToExistingCheckBoxTAB2.isSelected()) {
+
+            if((csvFilePathValueTAB2 != null)  && (templateConfigurationFilePathValueTAB2 != null) && (configurationsFilePathValueTAB2 != null)) {
+
+                MassImportProducts massImportProducts = new MassImportProducts();
+
+                ArrayList<Configuration> configurationList =
+                        massImportProducts.generateConfigurationListFromCSV(csvFilePathValueTAB2, templateConfigurationFilePathValueTAB2);
+
+                Configurations modifiedConfigurations =
+                        massImportProducts.returnAppendedConfigurationsFile(configurationList, configurationsFilePathValueTAB2);
+
+                String fileSaveLocation = generateSaveDialog();
+
+                DCSUtilityMarshaller.marshallConfigurations(modifiedConfigurations, fileSaveLocation);
+
+                confirmationLabelTAB2.setText("Operation successful");
+            }
+
+        } else {
+
+            MassImportProducts massImportProducts = new MassImportProducts();
+
+            ArrayList<Configuration> configurationList =
+                    massImportProducts.generateConfigurationListFromCSV(
+                            csvFilePathValueTAB2, templateConfigurationFilePathValueTAB2);
+
+            Configurations modifiedConfigurations =
+                    massImportProducts.returnNewConfigurationsFile(configurationList);
+
+            String fileSaveLocation = generateSaveDialog();
+
+            DCSUtilityMarshaller.marshallConfigurations(modifiedConfigurations,fileSaveLocation);
+
+            confirmationLabelTAB2.setText("Operation successful");
+
+        }
+    }
+
+    @FXML
     //Enable/Disable appending Configuration list to pre existing Configurations list
-    public void appendToExistingCheckBoxClick() {
+    public void appendToExistingCheckBoxTAB2Click() {
         if(appendToExistingCheckBoxTAB2.isSelected()) {
             disableAppend(false);
         } else {
@@ -177,6 +253,19 @@ public class MainViewController {
         }
     }
 
+    @FXML
+    //Log user out to sign in screen
+    public void logOutButtonTAB2Click() {
+        DCSUtilityApplication dcsUtilityApplication = new DCSUtilityApplication();
+        try {
+            dcsUtilityApplication.changeScene("login-view.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    //--------------------Methods--------------------
     //Enable or disable 'Append to existing' feature based on supplied boolean value
     public void disableAppend(boolean trueOrFalse) {
         configurationsFilePathChooseButtonTAB2.setDisable(trueOrFalse);
@@ -187,15 +276,28 @@ public class MainViewController {
 
     //Method that generates file chooser dialog pane
     public String generateFileChooser(String title, String fileDescription, String fileExtension) {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle(title);
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter(
+        FileChooser fileOpen = new FileChooser();
+        fileOpen.setTitle(title);
+        fileOpen.getExtensionFilters().addAll(new FileChooser.ExtensionFilter(
                 fileDescription, fileExtension));
 
         Stage stage = (Stage) tabPane.getScene().getWindow();
-        File selectedFile = fileChooser.showOpenDialog(stage);
+        File selectedFile = fileOpen.showOpenDialog(stage);
 
         //Return string value of chosen file's path
         return selectedFile.getAbsolutePath().toString();
+    }
+
+    //Method to allow user to choose save destination for resultant files
+    public String generateSaveDialog() {
+        FileChooser fileSave = new FileChooser();
+        fileSave.setTitle("Save File:");
+        fileSave.getExtensionFilters().addAll(new FileChooser.ExtensionFilter(
+                "Configurations File", "*.xml"));
+
+        Stage stage = (Stage) tabPane.getScene().getWindow();
+        File saveFile = fileSave.showSaveDialog(stage);
+
+        return saveFile.getAbsolutePath().toString();
     }
 }

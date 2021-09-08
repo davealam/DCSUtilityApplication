@@ -44,14 +44,14 @@
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
                    <Button fx:id="csvChooseButtonTAB2" onAction="#chooseCSVButtonTAB2Click" layoutX="424.0" layoutY="86.0" mnemonicParsing="false" text="Choose..." />
-                   <Button fx:id="templateConfigurationChooseButtonTAB2" onAction="#chooseTemplateConfigurationTAB2ButtonClick" layoutX="424.0" layoutY="155.0" mnemonicParsing="false" text="Choose..." />
-                   <Button fx:id="configurationsFilePathChooseButtonTAB2" layoutX="424.0" layoutY="258.0" mnemonicParsing="false" text="Choose..." />
-                   <Button fx:id="logOutButtonTAB2" layoutX="423.0" layoutY="307.0" mnemonicParsing="false" text="Log Out" />
-                   <Button fx:id="submitButtonTAB2" layoutX="489.0" layoutY="307.0" mnemonicParsing="false" text="Submit" />
+                   <Button fx:id="templateConfigurationChooseButtonTAB2" onAction="#chooseTemplateConfigurationButtonTAB2Click" layoutX="424.0" layoutY="155.0" mnemonicParsing="false" text="Choose..." />
+                   <Button fx:id="configurationsFilePathChooseButtonTAB2" onAction="#chooseConfigurationsButtonTAB2Click" layoutX="424.0" layoutY="258.0" mnemonicParsing="false" text="Choose..." />
+                   <Button fx:id="logOutButtonTAB2" onAction="#logOutButtonTAB2Click" layoutX="423.0" layoutY="307.0" mnemonicParsing="false" text="Log Out" />
+                   <Button fx:id="submitButtonTAB2" onAction="#submitButtonTAB2Click" layoutX="489.0" layoutY="307.0" mnemonicParsing="false" text="Submit" />
                    <TextField fx:id="csvFilePathTAB2" layoutX="134.0" layoutY="87.0" prefHeight="25.0" prefWidth="284.0" />
-                   <TextField fx:id="templateConfigurationFilePathTAB2" layoutX="134.0" layoutY="156.0" prefHeight="25.0" prefWidth="284.0" />
+                   <TextField fx:id="templateConfigurationFilePathTAB2" onAction="#chooseTemplateConfigurationButtonTAB2Click" layoutX="134.0" layoutY="156.0" prefHeight="25.0" prefWidth="284.0" />
                    <TextField fx:id="configurationsFilePathTAB2" layoutX="134.0" layoutY="258.0" prefHeight="25.0" prefWidth="284.0" promptText="To enable, check 'Append to existing'" />
-                   <CheckBox fx:id="appendToExistingCheckBoxTAB2" onAction="#appendToExistingCheckBoxClick" layoutX="218.0" layoutY="207.0" mnemonicParsing="false" text="Append to existing" />
+                   <CheckBox fx:id="appendToExistingCheckBoxTAB2" onAction="#appendToExistingCheckBoxTAB2Click" layoutX="218.0" layoutY="207.0" mnemonicParsing="false" text="Append to existing" />
 
                    <Label layoutX="180.0" layoutY="13.0" text="DCS Utility Application">
                      <font>

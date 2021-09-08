@@ -5,7 +5,7 @@ import dalam.dcsutilitymodel.spcobjects.configurations.configuration.Configurati
 
 public class StandardizeTests {
 
-    public void standardize(String filePathToTemplateConfiguration, String filePathToConfigurationsToModify) {
+    public Configurations standardize(String filePathToTemplateConfiguration, String filePathToConfigurationsToModify) {
 
         //Unmarshall and generate Template Configuration Object
         DCSUtilityUnmarshaller dcsUtilityUnmarshaller = new DCSUtilityUnmarshaller();
@@ -22,10 +22,7 @@ public class StandardizeTests {
             configuration.getTests().getTestList().addAll(templateConfiguration.getTests().getTestList());
         }
 
-        //Marshall modified Configurations Object
-        DCSUtilityMarshaller dcsUtilityMarshaller = new DCSUtilityMarshaller();
-        dcsUtilityMarshaller.marshallConfigurations(configurationsToModify, filePathToConfigurationsToModify);
-
+        return configurationsToModify;
 
     }
 
