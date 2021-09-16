@@ -140,18 +140,13 @@ public class MainViewController {
 
             DCSUtilityMarshaller.marshallConfigurations(modifiedConfigurations, fileSaveLocation);
 
-            //Clear file path values after performing operations, in case of consecutive operations
-            templateConfigurationFilePathValue = configurationsFilePathValue = null;
-
             generateAlert("TESTS STANDARDIZED", "Operation Successful", "Resultant file saved to: " + fileSaveLocation);
-
-//            confirmationLabel.setText("Operation Successful");
 
         } else {
             generateAlert("TESTS NOT STANDARDIZED",
                     "Operation Not Successful",
                     "Something went wrong. Please make sure to include all required file paths and try again. " +
-                            "If the issue persists, please contact Dave Alam");
+                            "If the issue persists, please contact Dave Alam.");
         }
     }
 
@@ -230,9 +225,6 @@ public class MainViewController {
                 //Marshall resultant modifiedConfigurations.xml file at the specified file name and location
                 DCSUtilityMarshaller.marshallConfigurations(modifiedConfigurations, fileSaveLocation);
 
-                //Clear path values for consecutive operations
-                csvFilePathValueTAB2 = templateConfigurationFilePathValueTAB2 = configurationsFilePathValueTAB2 = null;
-
                 //Generate confirmation message
                 generateAlert("CONFIGURATION APPENDED", "Operation Successful", "Resultant file saved to: " + fileSaveLocation);
             }
@@ -262,7 +254,7 @@ public class MainViewController {
             generateAlert("CONFIGURATIONS NOT GENERATED",
                     "Operation Not Successful",
                     "Something went wrong. Please make sure to include all required file paths and try again. " +
-                            "If the issue persists, please contact Dave Alam");
+                            "If the issue persists, please contact Dave Alam.");
 
         }
     }
