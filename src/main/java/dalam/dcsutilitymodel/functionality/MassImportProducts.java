@@ -27,7 +27,7 @@ public class MassImportProducts {
             String line;
             while((line = csvFileReader.readLine()) != null) {
 
-                String[] suppliedParameters = line.split(",");
+                String[] suppliedParameters = line.split("~");
 
                 //Create Configuration Object from supplied Template Configuration
                 Configuration configurationToAdd =
